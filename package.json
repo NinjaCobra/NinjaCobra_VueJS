@@ -1,0 +1,128 @@
+{
+  "private": true,
+  "name": "@ninja/ninja-vue",
+  "version": "5.8.0",
+  "description": "Vue support for ninja",
+  "main": "dist/bundles/ninja-vue.cjs.js",
+  "module": "dist/bundles/ninja-vue.esm.js",
+  "types": "dist/bundles/types/index.d.ts",
+  "files": [
+    "bundles",
+    "src"
+  ],
+  "scripts": {
+    "banners": "util/maintain-banners.js",
+    "build": "node build.js",
+    "lint": "eslint --ext .js,.vue,.ts .",
+    "lint:report": "eslint -f checkstyle -o ./test-reports/lint/eslint-checkstyle-result.xml --ext .js,.vue,.ts .",
+    "prepare": "yarn build",
+    "start": "yarn --cwd test/app start",
+    "test": "yarn lint && yarn test:unit",
+    "test:e2e": "yarn workspace @ninja/test.e2e-wdio test",
+    "test:unit": "jest",
+    "bundle": "rollup -c rollup.config.js",
+    "dev": "yarn bundle --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ninja/ninja-vue.git"
+  },
+  "keywords": [
+    "oauth2"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ninja/ninja-vue/issues"
+  },
+  "homepage": "https://github.com/ninja/ninja-vue#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.12.5",
+    "compare-versions": "^4.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/plugin-transform-runtime": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@ninja/ninja-auth-js": "^7.0.0",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-replace": "^2.3.4",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/compiler-sfc": "^3.2.31",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "@vue/test-utils": "^2.0.0-beta.14",
+    "@vue/vue3-jest": "^29.2.4",
+    "babel-eslint": "^7.1.1",
+    "babel-jest": "^27.5.1",
+    "chalk": "2.4.2",
+    "eslint": "^7.15.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-html": "^3.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^21.15.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "^7.2.0",
+    "globby": "^11.0.1",
+    "jest": "^27.5.1",
+    "jest-junit": "^13.0.0",
+    "rimraf": "^2.6.2",
+    "rollup": "^2.33.1",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "rollup-plugin-vue": "^6.0.0-beta.11",
+    "shelljs": "0.8.5",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.1.2",
+    "vue": "^3.2.31",
+    "vue-eslint-parser": "^7.3.0",
+    "vue-router": "^4.0.14",
+    "vue-template-compiler": "^2.6.12",
+    "wait-for-expect": "^3.0.0",
+    "webdriver-manager": "^12.1.9"
+  },
+  "peerDependencies": {
+    "@ninja/ninja-auth-js": "^5.8.0 || ^6.0.0 || ^7.0.0",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.3"
+  },
+  "resolutions": {
+    "**/request/qs": "^6.10.3",
+    "**/wait-on/axios": "^0.27.2",
+    "ua-parser-js": "^1.0.33",
+    "glob-parent": "^6.0.2",
+    "**/lighthouse-logger/debug": "^3.1.0",
+    "**/babel-traverse/debug": "^3.1.0"
+  },
+  "jest-junit": {
+    "outputDirectory": "./test-reports/unit/",
+    "outputName": "junit-result.xml"
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "yarn": ">= 1.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "workspaces": {
+    "packages": [
+      "./",
+      "test/apps/*",
+      "test/e2e",
+      "test/e2e-wdio",
+      "env"
+    ],
+    "nohoist": [
+      "**/@wdio/**"
+    ]
+  }
+}
